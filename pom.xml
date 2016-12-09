@@ -42,7 +42,7 @@
       <!--
           Compile-time (AoT) instrumentation; use _either_ AoT or agent-based, not both
       -->
-      <!--plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
         <executions>
@@ -54,10 +54,10 @@
               <tasks>
                 <property name="ant_classpath" refid="maven.dependency.classpath"/>
                 <taskdef name="instrumentationTask" classname="co.paralleluniverse.fibers.instrument.InstrumentationTask"
-                         classpath="${ant_classpath}"/-->
+                         classpath="${ant_classpath}"/>
                 <!-- Use "allowMonitors" to allow instrumenting methods containing synchronization -->
                 <!-- instrumentationTask allowMonitors="true" -->
-                <!--instrumentationTask>
+                <instrumentationTask>
                   <fileset dir="${project.build.directory}/classes/" includes="**/*.class"/>
                 </instrumentationTask>
               </tasks>
@@ -74,10 +74,10 @@
               <tasks>
                 <property name="ant_classpath" refid="maven.dependency.classpath"/>
                 <taskdef name="instrumentationTask" classname="co.paralleluniverse.fibers.instrument.InstrumentationTask"
-                         classpath="${ant_classpath}"/-->
+                         classpath="${ant_classpath}"/>
                 <!-- Use "allowMonitors" to allow instrumenting methods containing synchronization -->
                 <!-- instrumentationTask allowMonitors="true" -->
-                <!--instrumentationTask>
+                <instrumentationTask>
                   <fileset dir="${project.build.directory}/test-classes/" includes="**/*.class"/>
                 </instrumentationTask>
               </tasks>
@@ -87,7 +87,7 @@
             </goals>
           </execution>
         </executions>
-      </plugin-->
+      </plugin>
 
       <!-- Collecting classpath entries as properties in the form groupId:artifactId:type:[classifier]
            as per http://maven.apache.org/plugins/maven-dependency-plugin/properties-mojo.html -->
@@ -128,13 +128,13 @@
             <argument>-Dco.paralleluniverse.fibers.verifyInstrumentation=true</argument>
 
             <!-- Enable if using compile-time (AoT) instrumentation -->
-            <!-- argument>-Dco.paralleluniverse.fibers.disableAgentWarning</argument -->
+            <argument>-Dco.paralleluniverse.fibers.disableAgentWarning</argument>
 
             <!-- Quasar Agent for JDK 7 -->
             <!-- argument>-javaagent:${co.paralleluniverse:quasar-core:jar}</argument-->
 
             <!-- Quasar Agent for JDK 8 -->
-            <argument>-javaagent:${co.paralleluniverse:quasar-core:jar:jdk8}</argument> <!-- Add "=b" to force instrumenting blocking calls like Thread.sleep() -->
+            <!--<argument>-javaagent:${co.paralleluniverse:quasar-core:jar:jdk8}</argument> &lt;!&ndash; Add "=b" to force instrumenting blocking calls like Thread.sleep() &ndash;&gt;-->
 
             <!-- Classpath -->
             <argument>-classpath</argument> <classpath/>

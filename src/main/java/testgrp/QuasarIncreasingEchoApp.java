@@ -67,7 +67,7 @@ public class QuasarIncreasingEchoApp {
 
         System.out.println("after start: " + (System.currentTimeMillis() - start));
 
-        Thread.sleep(12000);
+        Thread.sleep(2000);
         System.out.println("after sleep: " + (System.currentTimeMillis() - start));
 
         try {
